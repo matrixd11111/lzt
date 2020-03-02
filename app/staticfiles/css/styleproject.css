@@ -1,0 +1,13 @@
+body {
+    background-color: #d1e1ff;
+}
+.navbar span a {
+    font-size: 2em;
+}
+.collapse ul {
+    margin-top: 10px;
+}
+
+.search-zone {
+    padding: 20px;
+}

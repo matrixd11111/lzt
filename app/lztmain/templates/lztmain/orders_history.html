@@ -1,0 +1,18 @@
+{% extends 'lztmain/base.html' %}
+
+{% block content %}
+    <h1>Страница истории заказов</h1>
+
+<table class="table table-bordered pricedescr">
+    <tbody>
+
+    {% for r in orders %}
+    <tr>
+        <td colspan="2">{{ r }}</td>
+    </tr>
+    {% endfor %}
+
+
+
+
+{% endblock %}

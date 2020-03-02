@@ -1,0 +1,29 @@
+{% extends 'lztmain/base.html' %}
+
+{% block content %}
+<div class="row">
+    <div class="search-zone">
+        <form class="form-inline my-2 my-lg-0" action="{% url 'search_results' %}" method="get">
+          <input class="form-control mr-sm-2" name="q" type="text" placeholder="Поиск..." aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
+        </form>
+    </div>
+</div>
+<div class="row">
+  {% for client in clients %}
+  <div class="card col-3">
+    <div class="card-body">
+      <h5 class="card-title"> {{ client.name }}</h5>
+      <h6 class="card-subtitle mb-2 text-muted"> {{ client.surname }}</h6>
+      <p class="card-text"> {{ client.note }}</p>
+      <a href="#" class="card-link">Открыть</a>
+      <a href="#" class="card-link">Изменить</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+
+
+
+{% endblock %}

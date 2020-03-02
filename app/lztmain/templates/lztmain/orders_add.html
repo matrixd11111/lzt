@@ -1,0 +1,27 @@
+{% extends 'lztmain/base.html' %}
+
+{% block content %}
+<form action="" method="post">
+  <div class="row">
+    {% csrf_token %}
+    <div class="col">
+      {{form.order_performer.label_tag}}
+      {{form.order_performer}}
+    </div>
+  </div>
+    <div class="row">
+      <div class="col">
+	{{form.order_service.label_tag}}
+	{{ form.order_service }}
+	<input class="btn btn-primary btn-md btn-block"
+	       name="service" 
+	       type="submit" 
+	       value="Send"
+	       />
+      </div>
+      <div class="col">
+	{{form.order_note.label_tag}}
+	{{ form.order_note }}
+      </div>
+</form>
+{% endblock %}

@@ -1,0 +1,18 @@
+{% extends 'lztmain/base.html' %}
+
+{% block content %}
+<form action="", method="post">
+  {% csrf_token %}
+  <input name="start_date"
+	 type="date"
+	 id="date"
+	 plaseholder="Дата" required/>
+  <input name="end_date"
+	 type="date"
+	 id="date"
+	 plaseholder="Дата" required/>
+  {{ order_form.order_performer }}
+  <input name="ok" type="submit" value="ok"/>
+</form>
+{{ orders_performer }}
+{% endblock%}

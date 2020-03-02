@@ -1,0 +1,12 @@
+{% extends 'lztmain/base.html' %}
+{% block content %}
+    <form class="form-horizontal" action="{% url 'login' %}" method="post">
+        {% csrf_token %}
+        {% if next %}
+            <input type="hidden" name="next" value="{{next}}"><br>
+        {% endif %}
+        <input class="form-control" name="username" placeholder="Имя пользователя">
+        <input class="form-control" name="password" type=password placeholder="Пароль">
+        <input class="basket_button" type="Submit" value="Войти">
+    </form>
+{% endblock %}

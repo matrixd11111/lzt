@@ -1,0 +1,17 @@
+{% load bootstrap4 %}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery='full' %}
+
+{% block content %}
+
+<form action="{% url "upload" %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    <input class="btn btn-primary" type="file" name="image_file">
+    <input type="submit" value="submit" />
+  </form>
+<p>Жернал учета зуботехнической лаборатории</p>
+  {% if image_url %}
+    <p>File uploaded at: <a href="{{ image_url }}">{{ image_url }}</a></p>
+  {% endif %}
+
+{% endblock %}

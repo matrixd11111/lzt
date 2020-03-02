@@ -1,0 +1,20 @@
+{% extends 'lztmain/base.html' %}
+
+{% block content %}
+<div class="row">
+  <div class="col-4">
+    <div class="list-group" id="list-tab" role="tablist">
+      {% for client in clients %}
+      <a class="list-group-item list-group-item-action active" id="list-home-list" data-toggle="list" href="#list-home" role="tab" aria-controls="home"> {{ client }}</a>
+      {% endfor %}
+    </div>
+  </div>
+  <div class="col-8">
+    <div class="tab-content" id="nav-tabContent">
+      {% for client in clients %}
+      <div class="tab-pane fade show active" id="list-home" role="tabpanel" aria-labelledby="list-home-list"> {{ client.note }}</div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock %}

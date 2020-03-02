@@ -1,0 +1,34 @@
+<ul class="nav nav-tabs ml-auto" role="tablist">
+    <li class="nav-item">
+        <a class="{% if request.resolver_match.url_name == 'clients' %} nav-link-active
+                  {% else %} nav-link {% endif %}" href="{% url 'clients' %}">Клиенты</a>
+    </li>
+    <li class="nav-item">
+        <a class="{% if request.resolver_match.url_name == 'orders_history' %} nav-link-active
+                  {% else %} nav-link {% endif %}" href="{% url 'orders_history' %}">Заказы</a>
+    </li>
+    <li class="nav-item">
+        <a class="{% if request.resolver_match.url_name == 'services' %} nav-link-active
+                  {% else %} nav-link {% endif %}" href="{% url 'services' %}">Услуги</a>
+    </li>
+    <li class="nav-item">
+        <a class="{% if request.resolver_match.url_name == 'stats' %} nav-link-active
+                  {% else %} nav-link {% endif %}" href="{% url 'stats' %}">Статистика</a>
+    </li>
+    {% if user.is_authenticated %}
+    {% if user.is_superuser %}
+    <li>
+        <a class="nav-link" href="/admin/">Администрирование</a>
+    </li>
+    {% endif %}
+    <li class='nav-item'>
+        <a class='nav-link' href="{% url 'logout' %}">Выйти</a>
+    </li>
+    {% else %}
+    <li class='nav-item'>
+        <a class="{% if request.resolver_match.url_name == 'login' %} nav-link-active
+                  {% else %} nav-link {% endif %}" href="{% url 'login' %}">Войти</a>
+    </li>
+    {% endif %}
+
+</ul>

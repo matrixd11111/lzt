@@ -1,0 +1,6 @@
+{% extends 'lztmain/base.html' %}
+{% block content %}
+{% for client in clienttype %}
+<a href="{% url 'client' client.id %}">Client</a>
+{% endfor %}
+{% endblock%}

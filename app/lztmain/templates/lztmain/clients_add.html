@@ -1,0 +1,55 @@
+{% extends 'lztmain/base.html' %}
+{% block content %}
+<div class="client_add">
+  <form action="" method="post">
+    {% csrf_token %}
+    <div class="form-row">
+      <div class="form-group col-md-4">
+	{{form.name.label_tag}}
+	{{form.name}}
+      </div>
+      <div class="form-group col-md-4">
+	{{form.surname.label_tag}}
+	{{form.surname}}
+      </div>
+      <div class="form-group col-md-4">
+	{{form.third_name.label_tag}}
+	{{form.third_name}}
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-4">
+	{{ form.email.label_tag }}
+	{{ form.email }}
+      </div>
+      <div class="form-group col-md-4">
+	{{ form.birth_date.label_tag }}
+	{{ form.birth_date }}
+      </div>
+      <div class="form-group col-md-4">
+	{{ form.phone_number.label_tag }}
+	{{ form.phone_number }}
+      </div>
+    </div>
+    <div class="form-row">
+<div class="form-group col-3">
+	{{ form.client_type.label_tag }}
+	{{ form.client_type }}
+      </div>
+      <div class="form-group col-1">
+	{{ form.patient.label_tag }}
+	{{ form.patient }}
+      </div>
+      <div class="form-group col-8">
+	{{ form.note.label_tag }}
+	{{ form.note }}
+      </div>
+</div>
+    <input class="btn btn-primary btn btn-block"
+	   name="service" 
+	   type="submit" 
+	   value="Ok"
+	   />
+  </form>
+</div>
+{% endblock%}

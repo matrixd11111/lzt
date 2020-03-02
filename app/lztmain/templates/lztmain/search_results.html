@@ -1,0 +1,38 @@
+{% extends 'lztmain/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container">
+    <h1>Результат поиска</h1>
+    {% if object_list %}
+        <table class="table table-hover">
+            <thead>
+                <tr>
+                  <th scope="col">Имя</th>
+                  <th scope="col">Фамилия</th>
+                  <th scope="col">E-mail</th>
+                  <th scope="col">Номер телефона</th>
+                </tr>
+            </thead>
+        {% for client in object_list %}
+        <tbody>
+            <tr>
+              <td>{{ client.name|title }}</td>
+              <td>{{ client.surname|title }}</td>
+              <td>{{ client.email }}</td>
+              <td>{{ client.phone_number }}</td>
+            </tr>
+        {% endfor %}
+        <tbody>
+        </table>
+    {% else %}
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">
+            <strong>Упс!</strong> Ничего не найдено
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}
+

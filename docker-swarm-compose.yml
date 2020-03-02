@@ -1,0 +1,73 @@
+version: '3.7'
+
+services:
+  web:
+    image: web_django:latest
+    deploy:
+      replicas: 1
+    command: gunicorn hello_django.wsgi:application --bind 0.0.0.0:8000
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    expose:
+      - 8000
+    environment:
+      DEBUG: "0"
+      SECRET_KEY: "change_me"
+      DJANGO_ALLOWED_HOSTS: "*"
+      SQL_ENGINE: "django.db.backends.postgresql"
+      SQL_DATABASE: "hello_django_prod"
+      SQL_USER: "hello_django"
+      SQL_PASSWORD: "hello_django"
+      SQL_HOST: "db"
+      SQL_PORT: "5432"
+      DATABASE: "postgres"
+      DJANGO_SUPERUSER_USERNAME: "admin"
+      DJANGO_SUPERUSER_PASSWORD: "VeryHardPassword"
+      DJANGO_SUPERUSER_EMAIL: "admin@example.com"
+    networks:
+      - web_network
+      - nginx_network
+      - db_network
+    depends_on:
+      - db
+
+  db:
+    image: postgres:12
+    deploy:
+      replicas: 1
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      POSTGRES_USER: "hello_django"
+      POSTGRES_PASSWORD: "hello_django"
+      POSTGRES_DB: "hello_django_prod"
+    ports:
+      - 5432:5432
+    networks:
+      - db_network
+
+  nginx:
+    image: nginx_django:latest
+    deploy:
+      replicas: 1
+    volumes:
+      - static_volume:/home/app/web/staticfiles
+      - media_volume:/home/app/web/mediafiles
+    ports:
+      - 8181:80
+    networks:
+      - nginx_network
+      - web_network
+    depends_on:
+      - web
+
+volumes:
+  postgres_data:
+  static_volume:
+  media_volume:
+
+networks:
+  db_network:
+  nginx_network:
+  web_network:

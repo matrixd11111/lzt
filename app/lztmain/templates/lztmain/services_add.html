@@ -1,0 +1,38 @@
+{% extends 'lztmain/base.html' %}
+
+{% block content %}
+<form action="" method="post">
+  {% csrf_token %}
+  <div class="row">
+    <div class="col">
+      {{ form.service_name.label_tag }}
+      {{ form.service_name }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{ form.service_cod.label_tag }}
+      {{ form.service_cod }}
+    </div>
+    <div class="col">
+      {{ form.service_expenses.label_tag }}
+      {{ form.service_expenses }}
+    </div>
+    <div class="col">
+      {{ form.service_price.label_tag }}
+      {{ form.service_price }}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      {{ form.service_note.label_tag }}
+      {{ form.service_note }}
+      <input class="btn btn-primary btn-lg btn-block"
+	     name="service" 
+	     type="submit" 
+	     value="Ok"
+	     />
+    </div>  
+  </div>
+</form>
+{% endblock %}
